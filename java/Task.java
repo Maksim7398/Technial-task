@@ -7,6 +7,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
 
@@ -61,18 +63,32 @@ public class Task {
 
     }
     public static void parseString(String s){
-        TreeMap<String, Integer> values = new TreeMap<>();
+        Map<String, Integer> values = new TreeMap<>();
         for (int i = 0; i < s.length(); i++){
             String t = (s.substring(i, i+1));
             values.computeIfPresent(t, (k,v) -> v+1);
             values.putIfAbsent(t, 1);
         }
+        double sum = 0.0;
+        double sum2 = 0.0;
+        double average = 0.0;
 
 
         for(Map.Entry<String, Integer> entry : values.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
-            System.out.println(key + " - " + value + " times ");
+            Pattern pattern = Pattern.compile("[\\dA-z]");
+            Matcher matcher = pattern.matcher(key);
+
+            if(matcher.find()){
+
+                System.out.println(key + " - " + value + " times ");
+
+                sum += value;
+                sum2 += key.length();
+                average =  (sum / sum2);
+            }
         }
+        System.out.println("Среднее значение частоты = " +  average);
     }
 }
