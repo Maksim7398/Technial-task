@@ -27,10 +27,11 @@ public class Task {
         int number = (int) (Math.random() * 1000);
         String query = " http://numbersapi.com/" + number + "/trivia";
         HttpURLConnection connection;
+        //Изменение нескольких строк кода)
 
         try {
             connection = (HttpURLConnection) new URL(query).openConnection();
-            connection.setRequestMethod("GET");
+            connection.setRequestMethod("POST");
 
             connection.setUseCaches(false);
             connection.setConnectTimeout(250);
