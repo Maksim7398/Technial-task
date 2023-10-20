@@ -90,6 +90,7 @@ public class Task {
                 average =  (sum / sum2);
             }
         }
-        System.out.println("Среднее значение частоты = " +  average);
+        System.out.println("Среднее значение  = " +  average);
+        System.out.println("Time to complete" System.currentTimeMillis());
     }
 }
